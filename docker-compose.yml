@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  licenseconfiguration:
+    image: microservice/licenseconfiguration:0.0.1-SNAPSHOT
+    ports:
+      - "5000:5000"
+    environment:
+      SPRING_PROFILES_ACTIVE: "native"
+    networks:
+      backend:
+        aliases:
+          - "licensingconfiguration"
+networks:
+  backend:
+    driver: bridge

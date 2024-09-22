@@ -1,8 +1,8 @@
-FROM openjdk:17-sim as build
+FROM openjdk:17-slim as build
 LABEL maintainer="GAJANAN C HEGDE"
 ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
-RUN mkdir target/dependency && (cd target/dependency; jar -xf /app.jar)
+RUN mkdir -p target/dependency && (cd target/dependency; jar -xf /app.jar)
 
 FROM openjdk:17-slim
 VOLUME /tmp
